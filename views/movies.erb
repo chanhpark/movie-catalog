@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h1>Movies List</h1>
+
+
+  <% @sorted_movies.each do |movie| %>
+  <ul>
+    <a href='/movies/<%=movie['id']%>'><%= movie['title'] %></a>
+  </ul>
+  <% end %>
+
+</body>
+</html>
