@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h1><%= @title %></h1>
+
+    <li><%= "Year: #{@year}" %></li>
+      <% if @synopsis == nil %>
+    <li><%= "Synopsis: Sorry there is no information on this movie." %></li>
+    <% else %>
+    <li><%= "Synopsis: " + @synopsis %></li>
+      <% end %>
+    <li><%= "Rating: #{@rating}" %></li>
+    <li><%= "Genre: #{@genre}" %></li>
+    <li><%= "Studio: #{@studio}" %></li>
+
+
+</body>
+</html>
