@@ -15,10 +15,16 @@ before do
 end
 
 get '/' do
-  redirect '/movies'
+  erb :index
 end
 
 get '/movies' do
+  @search_array = []
+  @searches = @search_array.map! { |title| }
+  if params[:query]
+    @query = params[:query]
+  end
+
   @sorted_movies = @all_movies.sort_by {|movie| movie["title"]}
   erb :movies
 end

@@ -3,12 +3,38 @@
 <body>
 
   <h1>Movies List</h1>
+  <form action="/movies" method="get">
+    <label for="query">Search: </label>
+    <input type="text" name="query" id="query" />
 
+    <input type="submit" value="Search" />
+  </form>
 
-  <% @sorted_movies.each do |movie| %>
+<% if @query %>
+  <h1> Search results for: <%= @query %></h1>
+    <% @sorted_movies.each do |search| %>
+      <% if search["title"].downcase.include?@query.downcase %>
+        <li><a href='/movies/<%=search['id']%>'><%= search["title"] %></a>
+        <% @search_array << search["title"] %>
+      <% end %>
+
+        <% if search["synopsis"] == nil %>
+          <% elsif search["synopsis"].downcase.include?@query.downcase %>
+            <% if !@search_array.include?search["title"] %>
+              <li><a href='/movies/<%=search['id']%>'><%= search["title"] %></a>
+              <% @search_array << search["title"] %>
+              <%= @searches %></li>
+
+            <% end %>
+        <% end %>
+    <% end %>
+
+  <% else %>
+    <% @sorted_movies.each do |movie| %>
   <ul>
-    <a href='/movies/<%=movie['id']%>'><%= movie['title'] %></a>
+    <a href='/movies/<%=movie['id']%>'><%= movie["title"] %></a>
   </ul>
+    <% end %>
   <% end %>
 
 </body>
