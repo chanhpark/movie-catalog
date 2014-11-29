@@ -20,9 +20,19 @@ end
 
 get '/movies' do
   @search_array = []
-  @searches = @search_array.map! { |title| }
   if params[:query]
     @query = params[:query]
+  end
+  ### make a page number
+  ### page number shows only 20 items per page
+  ### show the next 20 items after the 1st has been showsn
+  ### MATH (page number(variable) * 20 items)
+  ###
+
+  if params[:page]
+    then
+    @page = params[:page].to_i
+    else @page = 1
   end
 
   @sorted_movies = @all_movies.sort_by {|movie| movie["title"]}

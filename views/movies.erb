@@ -3,6 +3,10 @@
 <body>
 
   <h1>Movies List</h1>
+  <a href='/movies/@page'> Next page </a>
+
+
+
   <form action="/movies" method="get">
     <label for="query">Search: </label>
     <input type="text" name="query" id="query" />
@@ -23,8 +27,6 @@
             <% if !@search_array.include?search["title"] %>
               <li><a href='/movies/<%=search['id']%>'><%= search["title"] %></a>
               <% @search_array << search["title"] %>
-              <%= @searches %></li>
-
             <% end %>
         <% end %>
     <% end %>
